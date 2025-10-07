@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { TraficListComponent } from './components/trafics/list/list.component';
+import { StatComponent } from './components/stat/stat.component';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,7 @@ import { TraficListComponent } from './components/trafics/list/list.component';
     HeaderComponent,
     NavbarComponent,
     FooterComponent,
-TraficListComponent],
+StatComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
