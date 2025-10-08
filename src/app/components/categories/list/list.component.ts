@@ -3,10 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import axios from 'axios';
 
-interface Category{
-    id:number
-    kategoriaNev:string
-}
+
 
 @Component({
   selector: 'app-categorylist',
