@@ -8,11 +8,17 @@
       <tr>
         <th >#</th>
         <th >Kategóriák</th>
+        <th>Műveletek</th>
       </tr>
     </thead>
     <tbody>
     </tbody>
+      <tr *ngFor="let category of categories;">
+        <td> {{ category.id}}</td>
+        <td> {{ category.kategoriaNev}}</td>
+        <td></td>
+      </tr>
     <tfoot>
-        <th colspan="2" class="text-center">Összesen <span>0</span> rekord</th>
+        <th colspan="3" class="text-center">Összesen <span>0</span> rekord</th>
     </tfoot>
   </table>
