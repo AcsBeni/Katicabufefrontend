@@ -17,5 +17,7 @@ StatComponent],
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'Katicabufe';
+  apptitle = 'Katica Büfé App';
+  company = 'Bajai SZC Türr István Technikum'
+  author = "13.Szoftverfejlesztő"
 }
