@@ -1,4 +1,4 @@
-interface Trafic{
+export interface Trafic{
     id:number
     termek:string
     vevo:string

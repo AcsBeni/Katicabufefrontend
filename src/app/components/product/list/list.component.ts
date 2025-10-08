@@ -1,17 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import axios from 'axios';
+import { Trafic } from '../../../../interfaces/trafic';
 
-interface Trafic{
-    id:number
-    termek:string
-    vevo:string
-    kategoriaId:number
-    egyseg:number
-    nettoar:number
-    mennyiseg:number
-    kiadva:number
-}
+
 @Component({
   selector: 'app-productlist',
   standalone: true,
