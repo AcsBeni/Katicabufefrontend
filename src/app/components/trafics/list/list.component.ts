@@ -1,7 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import axios from 'axios';
+import { ApiService } from '../../../services/api.service';
+import { ApiResponse } from '../../../../interfaces/APIresponse';
+
+
 
 
 interface Trafic{
@@ -24,18 +27,21 @@ interface Trafic{
 })
 export class TraficListComponent implements OnInit {
 
+  constructor(private api:ApiService) { }
+
   trafics: Trafic[] =[]
 
 
   async ngOnInit(){
-    try{
-      const response = await axios.get('http://localhost:3000/trafics')
-      this.trafics = response.data
-      console.log(this.trafics)
-    }
-    catch(err){
-      console.log(err)
-      alert("Hiba")
-    }
+    this.api.selectAll("trafics").then((res:ApiResponse) =>{
+      if(res.status === 200){
+        this.trafics = res.data;
+      }
+      else{
+        console.log(res.message);
+      }
+  }
+      
+    );
   }
 }
