@@ -45,6 +45,14 @@ export class TraficListComponent implements OnInit {
     );
   }
   delete(id:number){
+    if(confirm("Biztosan törölni szeretnéd a forgalmat?")){
+      this.api.delete("trafics", id).then((res:ApiResponse)=>{
+        if(res.status === 200){
+          this.trafics = this.trafics.filter(item => item.id != id);
+        }
+
+      });
+    }
     
   }
 }

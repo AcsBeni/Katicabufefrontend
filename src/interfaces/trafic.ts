@@ -3,9 +3,9 @@ export interface Trafic{
     termek:string
     vevo:string
     kategoriaId:number
-    egyseg:number
+    egyseg:string
     nettoar:number
     mennyiseg:number
     kiadva:number
-    categoryName:string
+    
 }

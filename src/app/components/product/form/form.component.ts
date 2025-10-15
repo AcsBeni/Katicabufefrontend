@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+
 @Component({
   selector: 'app-productform',
   standalone: true,
@@ -9,5 +10,5 @@ import { RouterModule } from '@angular/router';
   styleUrl: './form.component.scss'
 })
 export class ProductFormComponent {
-
+  
 }

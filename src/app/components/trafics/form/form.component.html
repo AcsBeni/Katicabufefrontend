@@ -1,29 +1,42 @@
 <h3>Forgalom</h3>
 <hr>
 <h3>Forgalom felvétel</h3>
-<form class="form-floating">
-    <input type="name" class="form-control mb-2" id="traficname" placeholder="" value="">
-    <label for="traficname">Forgalom név</label>
-</form>
-<form class="form-floating">
-    <input type="name" class="form-control mb-2" id="productname" placeholder="" value="">
+
+<div  class="form-floating mb-3">
+    
+    <input type="name" class="form-control mb-2" id="productname"  [(ngModel)]="newTraffic.termek" placeholder="" value="">
     <label for="productname">Termék név</label>
-</form>
-<form class="form-floating">
-    <input type="name" class="form-control mb-2" id="buyername" placeholder="" value="">
+</div>
+<div  class="form-floating mb-3">
+    
+    <input type="name" class="form-control mb-2" id="buyername" [(ngModel)]="newTraffic.vevo" placeholder="" value="">
     <label for="buyername">Vevő név</label>
-</form>
-<form class="form-floating">
-    <input type="number" class="form-control mb-2" id="countfield" placeholder="" value="">
+</div >
+<select name="Kategória" id="" class="form-select mb-3" [(ngModel)]="newTraffic.kategoriaId">
+    <option value="4">Sütemények</option>
+    <option value="1">Étel</option>
+    <option value="2">Ital</option>
+    <option value="3">Desszertek</option>
+</select>
+<select name="egység" id="" class="form-select mb-3" [(ngModel)]="newTraffic.egyseg">
+    <option value="dl">Dl</option>
+    <option value="db">Db</option>
+    <option value="szelet">Szelet</option>
+   
+</select>
+<div class="form-floating mb-3">
+    
+    <input type="number" class="form-control mb-2" id="countfield" placeholder="" [(ngModel)]="newTraffic.mennyiseg" value="">
     <label for="countfield">Mennyiség</label>
-</form>
-<form class="form-floating">
-    <input type="number" class="form-control mb-2" id="Pricefield" placeholder="" value="">
+</div>
+<div class="form-floating mb-3">
+    
+    <input type="number" class="form-control mb-2" id="Pricefield" placeholder="" [(ngModel)]="newTraffic.nettoar" value="">
     <label for="Pricefield">Nettó ár</label>
-</form>
-<form class="form-floating">
-    <input type="number" class="form-control mb-3" id="Sumfield" placeholder="" value="">
-    <label for="Sumfield">Összesen</label>
-</form>
+</div>
+<select name="Kiadva" id="" class="form-select mb-3" [(ngModel)]="newTraffic.kiadva">
+    <option value="1">Kiadva</option>
+    <option value="0">Folyamatban</option>
+</select>
 <button type="button" class="btn btn-secondary mb-3 me-2 " routerLink="/trafics">Vissza a listához</button>
-<button type="button" class="btn btn-primary mb-3 " routerLink="/trafics">Mentés</button>
+<button type="button" class="btn btn-primary mb-3 " (click)="save()">Mentés</button>
