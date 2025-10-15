@@ -26,6 +26,22 @@ export class CategoryListComponent implements OnInit {
 
 
    async ngOnInit(){
+      this.getAllCategories();
+    }
+    delete(id:number){
+      if(confirm("Biztosan törölni szeretnéd a kategóriát?")){
+        this.api.delete("categories", id).then((res:ApiResponse)=>{
+          if(res.status === 200){
+            this.categories = this.categories.filter(item => item.id != id);
+          }
+          
+        });
+      }
+      else{
+        alert("A kategória törlése megszakítva!");
+      }
+    }
+    getAllCategories(){
       this.api.selectAll("categories").then((res:ApiResponse) =>{
         if(res.status === 200){
           this.categories = res.data;

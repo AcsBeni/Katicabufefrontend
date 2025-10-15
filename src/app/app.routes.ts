@@ -28,6 +28,10 @@ export const routes: Routes = [
         component:CategoryFormComponent
     },
     {
+        path:"categoryform/:id",
+        component:CategoryFormComponent
+    },
+    {
         path:"productform",
         component:ProductFormComponent
     },

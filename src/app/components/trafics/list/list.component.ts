@@ -12,7 +12,7 @@ interface Trafic{
   termek:string
   vevo:string
   kategoriaId:number
-  kategoriaNev:string
+  categoryName:string
   egyseg:number
   nettoar:number
   mennyiseg:number
@@ -43,5 +43,8 @@ export class TraficListComponent implements OnInit {
   }
       
     );
+  }
+  delete(id:number){
+    
   }
 }

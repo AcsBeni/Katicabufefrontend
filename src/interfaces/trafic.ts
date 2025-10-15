@@ -7,4 +7,5 @@ export interface Trafic{
     nettoar:number
     mennyiseg:number
     kiadva:number
+    categoryName:string
 }
