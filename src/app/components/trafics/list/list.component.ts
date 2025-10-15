@@ -53,6 +53,9 @@ export class TraficListComponent implements OnInit {
 
       });
     }
+    else{
+      alert("A forgalom törlése megszakítva!");
+    }
     
   }
 }
