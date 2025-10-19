@@ -4,6 +4,8 @@ import { Trafic } from '../../../../interfaces/trafic';
 import { ApiService } from '../../../services/api.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ApiResponse } from '../../../../interfaces/APIresponse';
+
 
 @Component({
   selector: 'app-traficform',
@@ -37,32 +39,27 @@ export class TraficFormComponent {
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params['id'];
     if(this.id){
-      this.api.select('trafics', this.id).then((res)=>{
+      this.api.select('trafics', this.id).then((res:ApiResponse)=>{
         this.newTraffic = res.data[0];
       })
     }
     this.getAllTraffics();
   }
   getAllTraffics(){
-    this.api.selectAll('trafics').then((res)=>{
-      console.log(res);
+    this.api.selectAll('trafics').then((res:ApiResponse)=>{
+      this.allTraffics = res.data;
     }
     )
   }
 
   save(){
-   
-     if(this.newTraffic.termek == "" || this.newTraffic.kategoriaId ==0 || this.newTraffic.vevo == "" ||this.newTraffic.egyseg == "" || this.newTraffic.nettoar == 0 || this.newTraffic.mennyiseg == 0){
-      alert("Minden mező kitöltése kötelező!");
-      return;
-     }
-     let idx = this.allTraffics.findIndex(item => item.termek.toLowerCase() == this.newTraffic.termek.toLowerCase() && item.id != this.newTraffic.id);
-     if(idx != -1){
-      alert("Ilyen nevű termék már létezik!");
-      return;
-     }
+     
+      if(this.newTraffic.termek == "" || this.newTraffic.kategoriaId ==0 || this.newTraffic.vevo == "" ||this.newTraffic.egyseg == "" || this.newTraffic.nettoar == 0 || this.newTraffic.mennyiseg == 0){
+        alert("Minden mező kitöltése kötelező!");
+        return;
+      }
       if(!this.id){
-        this.api.insert('trafics', this.newTraffic).then((res)=>{
+        this.api.insert('trafics', this.newTraffic).then((res:ApiResponse)=>{
           alert(res.message);
           this.newTraffic = {
             id:0,
@@ -77,6 +74,17 @@ export class TraficFormComponent {
           this.getAllTraffics();
         }
         );
-      }     
+      }   
+      else{
+        this.api.update('trafics',this.id, this.newTraffic ).then((res:ApiResponse)=>{
+          if(res.status ===200){
+            alert(res.message);
+            this.router.navigate(['/trafics']);
+          }
+          else{
+            alert("Hiba történt a frissítés során!");
+          }
+        });
+      }  
   }
 }

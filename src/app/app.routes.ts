@@ -24,6 +24,10 @@ export const routes: Routes = [
         component: TraficFormComponent
     },
     {
+        path: 'traficform/:id',
+        component: TraficFormComponent
+    },
+    {
         path:"categoryform",
         component:CategoryFormComponent
     },
