@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './form.component.scss'
 })
 export class TraficFormComponent {
-
+  
   id:number | undefined = undefined;
 
   newTraffic:Trafic={

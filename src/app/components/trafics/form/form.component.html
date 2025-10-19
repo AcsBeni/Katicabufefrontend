@@ -12,6 +12,11 @@
     <input type="name" class="form-control mb-2" id="buyername" [(ngModel)]="newTraffic.vevo" placeholder="" value="">
     <label for="buyername">Vevő név</label>
 </div >
+<!--
+<select name="Kategória" id="" class="form-select mb-3" [(ngModel)]="newTraffic.kategoriaId">
+    <option *ngFor="let category of categories" [value]="category.id">{{category.nev}}</option>
+</select>
+-->
 <select name="Kategória" id="" class="form-select mb-3" [(ngModel)]="newTraffic.kategoriaId">
     <option value="4">Sütemények</option>
     <option value="1">Étel</option>

@@ -44,6 +44,7 @@ export class TraficListComponent implements OnInit {
       
     );
   }
+  
   delete(id:number){
     if(confirm("Biztosan törölni szeretnéd a forgalmat?")){
       this.api.delete("trafics", id).then((res:ApiResponse)=>{

@@ -1,30 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import axios from 'axios';
-import { Trafic } from '../../../../interfaces/trafic';
+
+import { Product } from '../../../../interfaces/product';
+import { CommonModule } from '@angular/common';
+import { ApiService } from '../../../services/api.service';
+import { ApiResponse } from '../../../../interfaces/APIresponse';
 
 
 @Component({
   selector: 'app-productlist',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
 })
 export class ProductListComponent implements OnInit {
 
-  categories: Trafic[] =[]
+  constructor(private api:ApiService) { }
+  products: Product[] =[]
 
 
   async ngOnInit(){
-    try{
-      const response = await axios.get('http://localhost:3000/categories')
-      this.categories = response.data
-      console.log(this.categories)
+      this.getAllProducts();
     }
-    catch(err){
-      console.log(err)
-      alert("Hiba")
-    }
+
+  getAllProducts(){
+   this.api.selectAll("product").then((res:ApiResponse) =>{
+        if(res.status === 200){
+          this.products = res.data;
+        }
+        else{
+          console.log(res.message);
+        }});
   }
 }
