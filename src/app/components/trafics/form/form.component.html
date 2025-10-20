@@ -14,23 +14,26 @@
     <label for="buyername">Vevő név</label>
 </div >
 <!--
-<select name="Kategória" id="" class="form-select mb-3" [(ngModel)]="newTraffic.kategoriaId">
-    <option *ngFor="let category of categories" [value]="category.id">{{category.nev}}</option>
-</select>
--->
+
 <select name="Kategória" id="" class="form-select mb-3" [(ngModel)]="newTraffic.kategoriaId">
     
     <option value="1">Étel</option>
     <option value="2">Ital</option>
     <option value="3">Desszertek</option>
+    <option value="4">Sütemények</option>
 </select>
+-->
+<select name="Kategória" id="" class="form-select mb-3" [(ngModel)]="newTraffic.kategoriaId">
+    <option *ngFor="let traffic of allCategories" [value]="traffic.id">{{traffic.categoryName}}</option>
+</select>
+
 <select name="egyseg" id="" class="form-select mb-3" [(ngModel)]="newTraffic.egyseg">
     <option value="dl">Dl</option>
     <option value="db">Db</option>
     <option value="szelet">Szelet</option>
    
 </select>
-<p>Selected unit: {{ newTraffic.egyseg }}</p>
+
 
 <div class="form-floating mb-3">
     

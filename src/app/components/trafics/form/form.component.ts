@@ -1,11 +1,23 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { Trafic } from '../../../../interfaces/trafic';
+
 import { ApiService } from '../../../services/api.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiResponse } from '../../../../interfaces/APIresponse';
+import { Category } from '../../../../interfaces/category';
 
+interface Trafic{
+  id:number
+  termek:string
+  vevo:string
+  kategoriaId:number
+  categoryName:string
+  egyseg:string
+  nettoar:number
+  mennyiseg:number
+  kiadva:number
+}
 
 @Component({
   selector: 'app-traficform',
@@ -17,12 +29,16 @@ import { ApiResponse } from '../../../../interfaces/APIresponse';
 export class TraficFormComponent {
   
   id:number | undefined = undefined;
-
+  NewCategory:Category = {
+      id: 0,
+      categoryName: ''
+  }
   newTraffic:Trafic={
     id:0,
     termek:"",
     vevo:"",
     kategoriaId:0,
+    categoryName :"",
     egyseg:"",
     nettoar:0,
     mennyiseg:0,
@@ -35,6 +51,7 @@ export class TraficFormComponent {
   ) { }
 
   allTraffics:Trafic[] = [];
+  allCategories:Category[] = [];
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params['id'];
@@ -44,12 +61,18 @@ export class TraficFormComponent {
       })
     }
     this.getAllTraffics();
+    this.getAllCategories();
   }
   getAllTraffics(){
     this.api.selectAll('trafics').then((res:ApiResponse)=>{
       this.allTraffics = res.data;
     }
     )
+  }
+  getAllCategories(){
+    this.api.selectAll('categories').then((res:ApiResponse)=>{
+      this.allCategories = res.data;
+    })
   }
 
   save(){
@@ -61,11 +84,12 @@ export class TraficFormComponent {
       if(!this.id){
         this.api.insert('trafics', this.newTraffic).then((res:ApiResponse)=>{
           alert(res.message);
-          this.newTraffic = {
+          this.newTraffic  = {
             id:0,
             termek:"",
             vevo:"",
             kategoriaId:0,
+            categoryName :"",
             egyseg:"",
             nettoar:0,
             mennyiseg:0,

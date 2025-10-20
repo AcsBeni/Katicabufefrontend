@@ -40,11 +40,19 @@ export const routes: Routes = [
         component:ProductFormComponent
     },
     {
+        path:"productform/:id",
+        component:ProductFormComponent
+    },
+    {
         path:"product",
         component:ProductListComponent
     },
     {
         path:"buyerform",
+        component:BuyersFormComponent
+    },
+    {
+        path:"buyerform/:id",
         component:BuyersFormComponent
     },
     {
@@ -54,6 +62,10 @@ export const routes: Routes = [
     ,
     {
         path:"priceform",
+        component:PriceFormComponent
+    },
+    {
+        path:"priceform/:id",
         component:PriceFormComponent
     },
     {

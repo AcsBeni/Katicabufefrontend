@@ -31,4 +31,5 @@ export class PriceListComponent {
             console.log(res.message);
           }});
     }
+    
 }

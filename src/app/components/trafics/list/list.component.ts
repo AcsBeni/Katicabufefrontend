@@ -13,7 +13,7 @@ interface Trafic{
   vevo:string
   kategoriaId:number
   categoryName:string
-  egyseg:number
+  egyseg:string
   nettoar:number
   mennyiseg:number
   kiadva:number

@@ -64,9 +64,7 @@ export class CategoryFormComponent {
         }
         this.getAllCategories();
         
-      }
-      );
-    }
+    });}
     else{
       this.api.update('categories',this.id, this.NewCategory ).then((res:ApiResponse)=>{
         if(res.status ===200){
@@ -75,14 +73,8 @@ export class CategoryFormComponent {
 
         }
         else{
-
+          alert(res.message);
         }
-
     })
-    
-  }
-
-
- 
-  }
+  }}
 }
