@@ -1,2 +1,40 @@
 <h3>Statisztika</h3>
 <hr>
+<div *ngIf="statistics" class="stats">
+    <table class="table table-hover table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Users</th>
+                <th>Products</th>
+                <th>Sales</th>
+                <th>Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ statistics.usersCount }}</td>
+                <td>{{ statistics.productsCount }}</td>
+                <td>{{statistics.salesSum }}</td>
+                <td> {{ statistics.priceSum | currency:'HUF' }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+  <hr>
+  <h3>Products</h3>
+  <table cellpadding="5" class="table table-hover table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Termék</th>
+        <th>Darab</th>
+        <th>Ár (Ft)</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of statistics?.products">
+            <td>{{ product.termek }}</td>
+            <td>{{ product.count }}</td>
+            <td>{{ product.price | number }}</td>
+        </tr>
+    </tbody>
+  </table>

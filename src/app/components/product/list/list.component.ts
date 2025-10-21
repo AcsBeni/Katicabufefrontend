@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import axios from 'axios';
 
 import { Product } from '../../../../interfaces/product';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../../services/api.service';
 import { ApiResponse } from '../../../../interfaces/APIresponse';
+
 
 
 @Component({
@@ -22,6 +22,7 @@ export class ProductListComponent implements OnInit {
 
 
   async ngOnInit(){
+      
       this.getAllProducts();
     }
 
@@ -29,9 +30,10 @@ export class ProductListComponent implements OnInit {
    this.api.selectAll("product").then((res:ApiResponse) =>{
         if(res.status === 200){
           this.products = res.data;
+          
         }
         else{
           console.log(res.message);
-        }});
+    }});
   }
 }

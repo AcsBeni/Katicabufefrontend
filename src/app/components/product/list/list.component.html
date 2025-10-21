@@ -11,9 +11,9 @@
     <tbody>
      <tr *ngFor="let product of products; let i = index">
         <td>{{i + 1}}</td>
-        <td>{{product.termek}}</td>
+        <td>{{product.nev}}</td>
         <td class="text-end">
-          <button class="btn btn-sm btn-warning me-2" routerLink="/productform/{{product.id}}"><i class="bi bi-pencil-square"></i></button>
+          <button class="btn btn-sm btn-warning me-2" routerLink="/productform/{{product.termekID}}"><i class="bi bi-pencil-square"></i></button>
           <button class="btn btn-sm btn-danger"  ><i class="bi bi-trash"></i></button>
         </td>
       </tr>

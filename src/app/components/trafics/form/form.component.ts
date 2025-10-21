@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiResponse } from '../../../../interfaces/APIresponse';
 import { Category } from '../../../../interfaces/category';
+import { Product } from '../../../../interfaces/product';
 
 interface Trafic{
   id:number
@@ -44,6 +45,13 @@ export class TraficFormComponent {
     mennyiseg:0,
     kiadva:0
   }
+  NewProduct:Product={
+    termekID: 0,
+    categoryID: 0,
+    nev: "",
+    egyseg : "" ,
+    ar:0
+  }
   router: any;
   constructor(
     private api:ApiService,
@@ -52,6 +60,7 @@ export class TraficFormComponent {
 
   allTraffics:Trafic[] = [];
   allCategories:Category[] = [];
+  AllProducts:Product[] =[]
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params['id'];
@@ -62,22 +71,24 @@ export class TraficFormComponent {
     }
     this.getAllTraffics();
     this.getAllCategories();
-  }
-  getAllTraffics(){
-    this.api.selectAll('trafics').then((res:ApiResponse)=>{
-      this.allTraffics = res.data;
+    this.getAllProducts();
     }
-    )
-  }
-  getAllCategories(){
-    this.api.selectAll('categories').then((res:ApiResponse)=>{
-      this.allCategories = res.data;
-    })
-  }
-
+    getAllTraffics(){
+      this.api.selectAll('trafics').then((res:ApiResponse)=>{
+        this.allTraffics = res.data;
+    })}
+    getAllCategories(){
+      this.api.selectAll('categories').then((res:ApiResponse)=>{
+        this.allCategories = res.data;
+    })}
+    getAllProducts(){
+        this.api.selectAll('product').then((res:ApiResponse)=>{
+          this.AllProducts = res.data;
+    })}
+  
   save(){
      
-      if(this.newTraffic.termek == "" || this.newTraffic.kategoriaId ==0 || this.newTraffic.vevo == "" ||this.newTraffic.egyseg == "" || this.newTraffic.nettoar == 0 || this.newTraffic.mennyiseg == 0){
+      if(this.newTraffic.termek == "" || this.newTraffic.kategoriaId ==0 || this.newTraffic.vevo == "" ||this.newTraffic.egyseg == "" || this.newTraffic.nettoar == 0 || this.newTraffic.mennyiseg == 0 ){
         alert("Minden mező kitöltése kötelező!");
         return;
       }

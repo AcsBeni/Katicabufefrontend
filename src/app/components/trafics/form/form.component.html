@@ -3,11 +3,10 @@
 <h3 *ngIf="this.id">Forgalom módosítás</h3>
 <h3 *ngIf="!this.id">Forgalom felvétel</h3>
 
-<div  class="form-floating mb-3">
-    
-    <input type="name" class="form-control mb-2" id="productname"  [(ngModel)]="newTraffic.termek" placeholder="" value="">
-    <label for="productname">Termék név</label>
-</div>
+
+<select name="productname" id="" class="form-select mb-3" [(ngModel)]="newTraffic.termek">
+    <option *ngFor="let traffic of AllProducts" [value]="traffic.nev">{{traffic.nev}}</option>
+</select>
 <div  class="form-floating mb-3">
     
     <input type="name" class="form-control mb-2" id="buyername" [(ngModel)]="newTraffic.vevo" placeholder="" value="">

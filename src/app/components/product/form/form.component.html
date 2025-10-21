@@ -1,11 +1,25 @@
 <h3>Termékek</h3>
 <hr>
-<h3>Termék felvétel</h3>
+<h3 *ngIf="this.id">Termék módosítás</h3>
+<h3 *ngIf="!this.id">Termék felvétel</h3>
 
-<form class="form-floating">
-    <input type="name" class="form-control mb-2" id="productname" placeholder="" value="">
+<div class="form-floating">
+    <input type="name" class="form-control mb-2" id="productname" placeholder="" [(ngModel)]="NewProduct.nev" value="">
     <label for="productname">Termék név</label>
-</form>
+</div>
+<div class="form-floating">
+    <input type="name" class="form-control mb-2" id="product" placeholder="" [(ngModel)]="NewProduct.egyseg" value="">
+    <label for="product">egység</label>
+</div>
+<select name="Kategória" id="" class="form-select mb-3" [(ngModel)]="NewProduct.categoryID">
+    <option *ngFor="let product of allCategories" [value]="product.id">{{product.categoryName}}</option>
+</select>
+<p>{{NewProduct.categoryID}}</p>
+<div class="form-floating">
+    <input type="number" class="form-control mb-2" id="productprice" placeholder="" [(ngModel)]="NewProduct.ar" value="">
+    <label for="productprice">nettó ár</label>
+</div>
 
 <button type="button" class="btn btn-secondary mb-3 me-2 " routerLink="/product">Vissza a listához</button>
-<button type="button" class="btn btn-primary mb-3 " routerLink="/product">Mentés</button>
+<button *ngIf="!this.id" type="button" class="btn btn-primary mb-3 "  (click)="save()">Mentés</button>
+<button *ngIf="this.id" type="button" class="btn btn-warning mb-3 "  (click)="save()">Módosítás</button>

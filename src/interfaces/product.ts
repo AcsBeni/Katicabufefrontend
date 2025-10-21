@@ -1,4 +1,7 @@
 export interface Product {
-    id: number;
-    termek: string;
+    termekID: number,
+    categoryID: number,
+    nev: string,
+    egyseg : string ,
+    ar:number
 }
